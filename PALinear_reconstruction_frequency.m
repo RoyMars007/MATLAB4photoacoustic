@@ -42,7 +42,7 @@ press_distribute = [flip(press_distribute, 1); press_distribute(2:end, :)];
 comsol_grid = comsolGrid(Nt, dt * c, Ny, dy);
 
 % dt*c=dx means the x/t for PA wave axis direction
-w = c .* comsol_grid.kx;% kx = kt, that means w = c*dt = x direction (axis direction's displacement)£¬
+w = c .* comsol_grid.kx;% kx = kt, that means w = c*dt = x direction (axis direction's displacement)Â£Â¬
 
 % remap the computational grid for kx onto w, w/c = (kx^2 + ky^2)^1/2 = k. This is used for the interpolation from p(w, ky)
 % to p(kx, ky). Only real w is taken to force kx (and thus x) to be symmetrical about 0 after the interpolation. 
@@ -61,7 +61,7 @@ press_distribute = real(fftshift(ifftn(ifftshift(press_distribute))));
 % remove the left part of the mirrored data which corresponds to the negative part of the mirrored time data
 press_distribute = press_distribute( ((Nt + 1) / 2):Nt, :);
 
-% correct the scaling the forward FFT, dy = dt*c,  only half the plane collects (symmetrical£¬the limited view problem)
+% correct the scaling the forward FFT, dy = dt*c,  only half the plane collects (symmetricalÂ£Â¬the limited view problem)
 press_distribute = 2 * 2 * press_distribute ./ c;
 
 % end timer
